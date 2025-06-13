@@ -43,6 +43,7 @@ body {
     font-family: var(--font-primary);
     background-color: var(--color-black);
     color: var(--color-white);
+    overflow-x: hidden;
 }
 
 a {
@@ -201,14 +202,14 @@ li {
 }
 
 .product-mockup {
-    width: 100%;
+    max-height: 600px;
     max-width: 1000px;
 }
 
 /* --- Seção 3: Tópicos --- */
 .features-section {
     padding: var(--space-xl) 5%;
-    background-image: url(imgs/topicosBG.png);
+    background-image: url(imgs/topicos.png);
     background-size: cover;
     background-position: center;
     overflow-x: clip;
@@ -227,6 +228,7 @@ li {
 }
 
 .features-box {
+    border-radius: var(--border-radius-sm);
     background-color: var(--color-white);
     color: var(--color-dark);
     padding: var(--space-lg);
@@ -239,7 +241,7 @@ li {
     display: flex;
     flex-direction: column;
     gap: 42px;
-    margin-left: -124px;
+    margin-left: clamp(-124px, -21vw, -94px);
 }
 
 .feature-item {
@@ -257,8 +259,8 @@ li {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 120px;
-    height: 120px;
+    width: clamp(60px, 15vw, 120px);
+    height: clamp(60px, 15vw, 120px);
     background-color: #212121;
     border-radius: 50%;
     padding: 18px;
@@ -320,6 +322,74 @@ li {
     object-fit: cover;
 }
 
+/* --- Seção de Depoimentos (Prova Social) --- */
+.testimonials-section {
+    padding: var(--space-xl) 5%;
+    background-color: var(--color-dark-accent); /* Um fundo que combine com o tema escuro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    width: 100%;
+    max-width: 1200px; /* Limite a largura para melhor leitura */
+}
+
+.testimonial-card {
+    background-color: var(--color-dark);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-focus); /* Uma cor que se destaque */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    margin-bottom: var(--space-xs);
+}
+
+.avatar-initials {
+    text-transform: uppercase;
+}
+
+.testimonial-text {
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    color: var(--color-white);
+    flex-grow: 1; /* Para que o texto ocupe o espaço disponível */
+}
+
+.testimonial-author {
+    font-size: var(--fs-sm);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-gray);
+    margin-top: var(--space-xs);
+}
+
+
 /* --- Seção 5: Preços --- */
 .pricing-section {
     display: flex;
@@ -372,7 +442,7 @@ li {
 .pricing-header h3 {
     width: 100%;
     align-content: center;
-    min-height: 93px;
+    min-height: 124px;
     font-size: clamp(1.2rem, 7vw, 1.6rem);
     font-weight: var(--font-weight-regular);
 }
@@ -547,8 +617,23 @@ li {
     .feature-icon-wrapper {
         margin-bottom: var(--space-sm);
     }
-}
 
-@media (max-width: 464px){
+    /* Ajuste para o testimonial-card em telas pequenas */
+    .testimonial-card {
+        padding: var(--space-sm); /* Reduz o padding para espaços menores */
+    }
 
+    .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: var(--fs-sm); /* Reduz o tamanho da fonte */
+    }
+
+    .testimonial-text {
+        font-size: var(--fs-xs); /* Se precisar de uma fonte ainda menor */
+    }
+
+    .testimonial-author {
+        font-size: var(--fs-xs);
+    }
 }
