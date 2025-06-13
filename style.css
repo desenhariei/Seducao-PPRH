@@ -15,8 +15,8 @@
     --font-weight-bold: 700;
     --font-weight-black: 900;
     --fs-sm: clamp(0.7rem, 2vw, 1rem);
-    --fs-md: clamp(1rem, 5vw, 1.3rem);
-    --fs-lg: clamp(1rem, 5vw, 3rem);
+    --fs-md: clamp(1rem, 3vw, 1.3rem);
+    --fs-lg: clamp(1rem, 3vw, 3rem);
     --fs-xl: clamp(1rem, 7vw, 4rem);
 
     /* Espaçamento */
