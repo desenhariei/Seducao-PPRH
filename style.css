@@ -1,0 +1,551 @@
+/* --- Variáveis Globais e Estilos Base --- */
+:root {
+    /* Cores */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-dark: #1a1a1a;
+    --color-dark-accent: #2a2a2a;
+    --color-gray: #999999;
+    --color-focus: #4a90e2;
+    --color-price-gradient: linear-gradient(180deg, rgba(0, 0, 0, 1) 50%, rgba(46, 46, 46, 1) 100%);
+
+    /* Tipografia */
+    --font-primary: "Montserrat", sans-serif;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-black: 900;
+    --fs-sm: clamp(0.7rem, 2vw, 1rem);
+    --fs-md: clamp(1rem, 5vw, 1.3rem);
+    --fs-lg: clamp(1rem, 5vw, 3rem);
+    --fs-xl: clamp(1rem, 7vw, 4rem);
+
+    /* Espaçamento */
+    --space-xs: 10px;
+    --space-sm: 16px;
+    --space-md: 32px;
+    --space-lg: 64px;
+    --space-xl: clamp(64px, 10vw, 128px);
+
+    /* Outros */
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--color-focus);
+}
+
+p,
+h1,
+h2,
+h3,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+/* --- Componentes Reutilizáveis --- */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px var(--space-md);
+    border-radius: var(--border-radius-sm);
+    font-weight: var(--font-weight-black);
+    font-size: var(--fs-md);
+    text-align: center;
+    width: clamp(185px, 60vw, 350px);
+    cursor: pointer;
+    /* Transição para todas as propriedades */
+    transition: all 0.5s ease;
+}
+
+.btn:hover {
+    transform: scale(1.08); /* Mantendo transform para scale, pois margin não faria o mesmo efeito */
+}
+
+.btn--light {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    border: 2px solid var(--color-white);
+}
+
+.btn--light:hover {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn--dark {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    border: 2px solid var(--color-dark);
+}
+
+.btn--dark:hover {
+    background-color: transparent;
+    color: var(--color-dark);
+    border-color: var(--color-dark);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 10vw, 100px);
+    width: 100%;
+}
+
+.section-heading h2 {
+    font-size: var(--fs-md);
+    font-weight: var(--font-weight-black);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.section-heading .heading-line {
+    flex-grow: 1;
+    height: 10px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+}
+
+.section-heading--dark h2 {
+    color: var(--color-black);
+}
+
+.section-heading--dark .heading-line {
+    background-color: var(--color-black);
+}
+
+/* --- Seção 1: Herói --- */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 5%;
+    background-image: url(imgs/banner.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.hero-section h1 {
+    font-weight: var(--font-weight-regular);
+    color: var(--color-gray);
+    font-size: var(--fs-lg);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    display: block;
+}
+
+.hero-title {
+    font-weight: var(--font-weight-black);
+    color: var(--color-white);
+    font-size: var(--fs-xl);
+}
+
+.hero-text {
+    font-size: var(--fs-sm);
+    color: var(--color-gray);
+}
+
+.hero-text-strong {
+    font-weight: var(--font-weight-bold);
+}
+
+/* --- Seção 2: Produto --- */
+.product-section {
+    padding: var(--space-xl) 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+}
+
+.product-section h2 {
+    font-size: var(--fs-md);
+    font-weight: var(--font-weight-black);
+}
+
+.product-mockup {
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* --- Seção 3: Tópicos --- */
+.features-section {
+    padding: var(--space-xl) 5%;
+    background-image: url(imgs/topicosBG.png);
+    background-size: cover;
+    background-position: center;
+    overflow-x: clip;
+}
+
+.features-container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(96px, 20vw, 128px);
+}
+
+.features-content {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.features-box {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    padding: var(--space-lg);
+    width: 80%;
+    max-width: 1000px;
+    position: relative;
+}
+
+.features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    margin-left: -124px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.feature-item p {
+    font-size: var(--fs-sm);
+}
+
+.feature-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    background-color: #212121;
+    border-radius: 50%;
+    padding: 18px;
+}
+
+.feature-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* --- Seção 4: Informações Adicionais --- */
+.info-section {
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    padding: var(--space-xl) 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+.info-block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-lg);
+    margin: 0 auto;
+}
+
+.info-content {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 5%, 64px);
+    width: 100%;
+    max-width: 1780px;
+    margin: 0 auto;
+}
+
+.info-content--reverse {
+    flex-direction: row-reverse;
+}
+
+.info-text {
+    flex-basis: 50%;
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+}
+
+.info-text strong {
+    font-size: var(--fs-md);
+    font-weight: var(--font-weight-bold);
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+.info-image {
+    flex-basis: 50%;
+    width: 50%;
+    max-width: 855px;
+    object-fit: cover;
+}
+
+/* --- Seção 5: Preços --- */
+.pricing-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
+    padding: var(--space-xl) 5%;
+    background-image: url(imgs/priceBG.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--color-dark);
+    border-radius: var(--border-radius-md);
+    width: 100%;
+    max-width: 500px;
+    min-height: 550px;
+    padding-bottom: var(--space-lg);
+    text-align: center;
+    /* Transição para todas as propriedades afetadas */
+    transition: all 0.5s ease;
+    z-index: 1; /* Garante que o card esteja acima de outros conteúdos normalmente */
+    position: relative; /* Necessário para z-index */
+}
+
+.pricing-card:hover {
+    margin-top: -32px; /* Move o card para cima no hover, afeta o layout */
+    /* Não podemos usar scale(1.03) aqui junto com margin, pois transform é uma propriedade separada. */
+    /* Se quiser scale, precisaria de um elemento aninhado para aplicar o transform ou usar JS para gerenciar ambos. */
+    /* Ou aceitar que o scale não funcionará com esta abordagem de margin. */
+    box-shadow: 0 0 40px rgba(197, 197, 197, 0.7);
+    z-index: 2; /* Garante que o card em hover fique acima dos outros */
+}
+
+.pricing-header {
+    display: flex;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    width: 100%;
+    padding: var(--space-lg);
+    border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+}
+
+.pricing-header h3 {
+    width: 100%;
+    align-content: center;
+    height: 93px;
+    font-size: clamp(1.2rem, 7vw, 1.6rem);
+    font-weight: var(--font-weight-regular);
+}
+
+.pricing-header strong {
+    font-weight: var(--font-weight-black);
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0;
+}
+
+.price-original {
+    font-size: var(--fs-md);
+}
+
+.price-original span {
+    text-decoration: line-through;
+}
+
+.price-current {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-black);
+    font-size: clamp(2rem, 25vw, 90px);
+    background: var(--color-price-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pricing-card .btn {
+    width: 80%;
+}
+
+/* --- Rodapé --- */
+.footer {
+    background-color: var(--color-dark-accent);
+    padding: var(--space-sm) var(--space-xs);
+    text-align: center;
+}
+
+.footer p {
+    font-size: clamp(0.5rem, 1vw + 0.5rem, 1rem);
+    color: var(--color-white);
+}
+
+/* --- Animações de Visibilidade (Scroll) --- */
+/* Definir o estado inicial para todas as animações */
+.animate-fade-in,
+.animate-slide-up,
+.animate-scale-in,
+.animate-slide-right {
+    opacity: 0;
+    /* Remover will-change: transform pois não usaremos transform para slide */
+    /* will-change: opacity, transform;  -> Remover ou mudar para will-change: opacity, margin; */
+    /* Para simplificar, vou manter will-change: opacity, transform; pois alguns efeitos podem ainda usar transform (ex: button) */
+    will-change: opacity, margin, transform; /* Incluindo margin e transform para abrangência */
+}
+
+/* Aplicar transição global de 0.5s para todas as classes animadas */
+.animate-fade-in,
+.animate-slide-up,
+.animate-scale-in,
+.animate-slide-right {
+    transition: all 0.5s ease;
+}
+
+
+/* Animação Fade In */
+.animate-fade-in.is-visible {
+    opacity: 1;
+}
+
+/* Animação Slide Up (usando margin-top) */
+.animate-slide-up {
+    margin-top: 50px; /* Posição inicial abaixo */
+    /* opacity: 0; está definido no seletor agrupado */
+}
+.animate-slide-up.is-visible {
+    opacity: 1;
+    margin-top: 0; /* Posição final */
+}
+
+/* Animação Scale In (ainda usa transform para o efeito de escala) */
+.animate-scale-in {
+    transform: scale(0.9);
+    /* opacity: 0; está definido no seletor agrupado */
+}
+.animate-scale-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animação Slide Right (usando margin-left) */
+.animate-slide-right {
+    margin-left: -50px; /* Posição inicial à esquerda */
+    /* opacity: 0; está definido no seletor agrupado */
+}
+.animate-slide-right.is-visible {
+    opacity: 1;
+    margin-left: 0; /* Posição final */
+}
+
+/* Atrasos (Delays) - Aplicados às transições de entrada/visibilidade */
+.delay-0-3s { transition-delay: 0.3s; }
+.delay-0-5s { transition-delay: 0.5s; }
+.delay-0-6s { transition-delay: 0.6s; }
+.delay-0-9s { transition-delay: 0.9s; }
+.delay-1s { transition-delay: 1s; }
+.delay-2s { transition-delay: 2s; }
+
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 1120px) {
+    .hero-section {
+        background-image: url(imgs/bannerTablet.png);
+    }
+
+    .features-section {
+        background-image: url(imgs/topicosMobile.png);
+    }
+}
+
+@media (max-width: 910px) {
+
+    .info-content,
+    .info-content--reverse {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .info-image,
+    .info-text {
+        width: 100%;
+        flex-basis: auto;
+    }
+}
+
+@media (max-width: 790px) {
+    .pricing-card {
+        min-height: auto;
+    }
+
+    .features-box {
+        width: 95%;
+    }
+}
+
+@media (max-width: 490px) {
+    .features-content {
+        justify-content: center;
+    }
+
+    .features-box {
+        width: 100%;
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+
+    .features-list {
+        margin-left: 0; /* Reseta a margem no mobile */
+    }
+
+    .feature-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .feature-icon-wrapper {
+        margin-bottom: var(--space-sm);
+    }
+}
