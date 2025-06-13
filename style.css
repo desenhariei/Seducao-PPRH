@@ -78,7 +78,7 @@ li {
     font-weight: var(--font-weight-black);
     font-size: var(--fs-md);
     text-align: center;
-    width: clamp(185px, 60vw, 350px);
+    width: clamp(185px, 80vw, 350px);
     cursor: pointer;
     /* Transição para todas as propriedades */
     transition: all 0.5s ease;
@@ -293,8 +293,7 @@ li {
     align-items: center;
     gap: clamp(16px, 5%, 64px);
     width: 100%;
-    max-width: 1780px;
-    margin: 0 auto;
+    justify-content: space-between;
 }
 
 .info-content--reverse {
@@ -373,7 +372,7 @@ li {
 .pricing-header h3 {
     width: 100%;
     align-content: center;
-    height: 93px;
+    min-height: 93px;
     font-size: clamp(1.2rem, 7vw, 1.6rem);
     font-weight: var(--font-weight-regular);
 }
@@ -548,4 +547,8 @@ li {
     .feature-icon-wrapper {
         margin-bottom: var(--space-sm);
     }
+}
+
+@media (max-width: 464px){
+
 }
